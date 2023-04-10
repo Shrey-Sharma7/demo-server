@@ -5,7 +5,7 @@ const morgan = require('morgan');
 const helmet = require('helmet');
 const fs = require('fs');
 const app = express();
-const port = 443;
+const port = 3000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
