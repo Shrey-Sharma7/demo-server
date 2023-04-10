@@ -15,15 +15,12 @@ app.use(morgan());
 app.use(helmet());
 
 app.post('/webhook', (req, res) => {
-    console.log(req.body);
-    const str = `*********\n${new Date().toISOString()}\n${JSON.stringify(req.body)}\n\n`;
-    fs.appendFile('logs.txt', str, err => {
-        if (err) throw err;
-        console.log(`Response logged to logs.txt`);
-    });
-    res.send(req.body);
-})
+  console.log('Received webhook:', req.body);
+  // Process the webhook payload here
+  res.sendStatus(200);
+});
 
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`);
+  console.log(`Webhook server listening on port ${port}`);
 });
